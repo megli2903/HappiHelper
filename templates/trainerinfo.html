@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Get User Name</title>
+</head>
+<body>
+    <h1>Welcome!</h1>
+    
+    <form method="POST">
+        <label for="user_name">Enter your name:</label>
+        <input type="text" id="user_name" name="user_name">
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if user_name %}
+    <h2>Hello, {{ user_name }}!</h2>
+    {% endif %}
+</body>
+</html>
