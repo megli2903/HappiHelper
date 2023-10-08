@@ -72,6 +72,6 @@ def professor_lab():
     if path_choice == user.social or path_choice == user.plan:
         print("Great choice to choose the " + path_choice + " path! A thrilling journey of resilience with " + starter_choice + " awaits!")
 
-user = professor_lab()
+professor_lab()
 
-
+print(user.name, user.party, user.plan, user.social)
