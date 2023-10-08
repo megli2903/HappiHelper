@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Journey</title>
+</head>
+<body>
+    <h1>Welcome to Your Journey</h1>
+    <p id="dataDisplay">Loading data...</p>
+
+    <script>
+        // JavaScript code to fetch and display data
+        fetch(main.py)
+            .then(response => response.json()) // Assuming data is in JSON format
+            .then(data => {
+                const dataDisplay = document.getElementById('dataPlaceholder');
+                dataPlaceholder.textContent = data; // Display data on the page
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                const dataPlaceholder = document.getElementById('dataPlaceholder');
+                dataPlaceholder.textContent = 'Failed to fetch data';
+            });
+    </script>
+</body>
+</html>
