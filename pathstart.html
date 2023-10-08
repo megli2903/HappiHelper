@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pick Your Choice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        #choice-section {
+            display: none;
+            margin-top: 20px;
+        }
+
+        #pokemon-images {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        img {
+            width: 100px;
+            height: 100px;
+            border: 2px solid #333;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pick Your Choice</h1>
+        <button id="button1">Social</button>
+        <button id="button2">Spontaneous</button>
+
+        <div id="choice-section">
+            <p>Great Choice!</p>
+            <p>Hi Trainer, I'm Charlotte Reindeer, which task would you like to complete?</p>
+            <div id="pokemon-images">
+                <img src="farfetchd.jpg" alt="Farfetch'd">
+                <img src="jigglypuff.jpg" alt="Jigglypuff">
+                <img src="clefairy.jpg" alt="Clefairy">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const button1 = document.getElementById("button1");
+        const button2 = document.getElementById("button2");
+        const choiceSection = document.getElementById("choice-section");
+
+        button1.addEventListener("click", function () {
+            choiceSection.style.display = "block";
+        });
+
+        button2.addEventListener("click", function () {
+            choiceSection.style.display = "block";
+        });
+    </script>
+</body>
+</html>
