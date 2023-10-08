@@ -1,1 +1,23 @@
 <!DOCTYPE html>
+<html>
+<head>
+    <title>Select Your Path - Sassyland</title>
+</head>
+<body>
+    <h1>Select Your Path</h1>
+    <p>Based on our extensive research on your personality, we have determined the routes that will prove most exciting!</p>
+    <p>Please select one of the following paths:</p>
+
+    <form method="POST" action="{{ url_for('confirmation') }}">
+        <label for="selected_path">Select your path:</label>
+        <select id="selected_path" name="selected_path" required>
+            <option value="introspection">Introspection</option>
+            <option value="social">Social</option>
+            <option value="spontaneous">Spontaneous</option>
+            <option value="planning">Planning</option>
+        </select><br><br>
+
+        <input type="submit" value="Start Your Chosen Path">
+    </form>
+</body>
+</html>

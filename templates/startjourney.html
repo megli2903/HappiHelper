@@ -5,31 +5,47 @@
 </head>
 <body>
     <h1>Welcome to Sassyland!</h1>
-    <form method="POST">
+    <form method="POST" action="/selectpath">
         <label for="user_name">Enter your name:</label>
         <input type="text" id="user_name" name="user_name" required><br><br>
 
         <label for="personality_type">Select your personality type:</label>
         <select id="personality_type" name="personality_type" required>
-            <option value="ENFP">ENTJ</option>
-            <option value="ENFP">ENFJ</option>
-            <option value="ENFP">ESFJ</option>
-            <option value="ENFP">ESTJ</option>
-            <option value="ENFP">ENTP</option>
+            <option value="ENTJ">ENTJ</option>
+            <option value="ENFJ">ENFJ</option>
+            <option value="ESFJ">ESFJ</option>
+            <option value="ESTJ">ESTJ</option>
+            <option value="ENTP">ENTP</option>
             <option value="ENFP">ENFP</option>
-            <option value="ENFP">ESFP</option>
-            <option value="ENFP">ESTP</option>
-            <option value="INTJ">INTP</option>
-            <option value="INTJ">INFP</option>
-            <option value="INTJ">ISFP</option>
-            <option value="INTJ">ISTP</option>
+            <option value="ESFP">ESFP</option>
+            <option value="ESTP">ESTP</option>
+            <option value="INTP">INTP</option>
+            <option value="INFP">INFP</option>
+            <option value="ISFP">ISFP</option>
+            <option value="ISTP">ISTP</option>
             <option value="INTJ">INTJ</option>
-            <option value="INTJ">INFJ</option>
-            <option value="INTJ">ISFJ</option>
-            <option value="INTJ">ISTJ</option>
-            <!-- Add more personality types here as needed -->
+            <option value="INFJ">INFJ</option>
+            <option value="ISFJ">ISFJ</option>
+            <option value="ISTJ">ISTJ</option>
         </select><br><br>
 
+        <label for="starter_pokemon">Choose your starter Pokémon:</label><br>
+        <input type="radio" id="charmander" name="starter_pokemon" value="charmander">
+        <label for="charmander">Charmander</label>
+        <img src="charmander.png" alt="Charmander"><br>
+
+        <input type="radio" id="bulbasaur" name="starter_pokemon" value="bulbasaur">
+        <label for="bulbasaur">Bulbasaur</label>
+        <img src="bulbasaur.png" alt="Bulbasaur"><br>
+
+        <input type="radio" id="squirtle" name="starter_pokemon" value="squirtle">
+        <label for="squirtle">Squirtle</label>
+        <img src="squirtle.png" alt="Squirtle"><br><br>
+
+        <!-- Add hidden input fields for user_name and starter_pokemon -->
+        <input type="hidden" name="user_name" value="">
+        <input type="hidden" name="starter_pokemon" value="">
+        
         <input type="submit" value="Start Your Journey">
     </form>
 </body>

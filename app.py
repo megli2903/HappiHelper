@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 
 
 app = Flask(__name__)
@@ -76,16 +76,6 @@ evolution_lines = {
 }
 
 
-
-@app.route('/', methods=['GET'])
-def index():
-    user_name = None  # Initialize user_name to None
-
-    # if request.method == 'GET':
-    #     # If the form is submitted, get the user's name from the form
-    #     user_name = request.form.get('user_name')
-
-    return render_template('startjourney.html', user_name=user_name)
 
 class Trainer:
     def __init__(self, social=None, name=None, thinking=None, obs=None, plan=None, currentpath=None, party=None):
@@ -169,31 +159,82 @@ task_list = {
     "horsea": hortask,
     "vulpix": vultask
 }
-@app.route('/', methods=['GET'])
+
 @app.route('/', methods=['GET', 'POST'])
 def welcome():
     if request.method == 'POST':
         user_name = request.form.get('user_name')
         personality_type = request.form.get('personality_type')
-        
-        # Use the user input to create a Trainer object
-        user = Trainer(name=user_name)
+        starter_pokemon = request.form.get('starter_pokemon')
 
-        # Determine the personality type based on the user input (You may need to adjust this logic)
-        if personality_type == 'ENFP':
-            user.social = 'social'
-            user.obs = 'intuition'
-            user.thinking = 'feeling'
-            user.plan = 'spontaneous'
+        # Create the Trainer object with user inputs
+        trainer_type = Trainer(name=user_name, social=personality_type)
+
+        # Store the chosen starter Pokémon
+        starter_choice = starter_pokemon.lower()
+        starter_pokemon_obj = Pokemon(starter_choice)
+        if starter_choice == "bulbasaur":
+            starter_pokemon_obj.evolution = "ivysaur"
+        elif starter_choice == "squirtle":
+            starter_pokemon_obj.evolution = "wartortle"
         else:
-            user.social = 'introspection'
-            user.obs = 'observation'
-            user.thinking = 'thought'
-            user.plan = 'planning'
+            starter_pokemon_obj.evolution = "charmeleon"
 
-        return render_template('startjourney.html', user=user)
+        # Create a PokemonParty with the chosen starter Pokémon
+        pokemon_list = [starter_pokemon_obj]
+        pokemon_party = PokemonParty(pokemon_list)
+        trainer_type.party = pokemon_party
+
+        return render_template('startjourney.html', user_name=user_name, starter_pokemon=starter_pokemon_obj)
 
     return render_template('startjourney.html')
+
+@app.route('/selectpath', methods=['GET', 'POST'])
+def pathselect():
+    url = ""
+    if request.method == 'POST':
+        selected_path = request.form.get('selected_path')
+        url = f"confirmation/{selected_path}"
+        return render_template('pathselect.html')
+    return redirect(url)
+
+@app.route('/confirmation', methods=["POST"])
+def confirmation():
+    selected_path = request.form.to_dict()["selected_path"]
+    return render_template('confirmation.html', selected_path=selected_path)
+
+
+
+# @app.route('/selectpath', methods=['GET', 'POST'])
+# def pathselect():
+#     if request.method == 'POST':
+#         selected_path = request.form.get('selected_path')
+#         url = f"confirmation/{selected_path}"
+#         return redirect(url)
+    
+#     return render_template('pathselect.html')
+
+# @app.route('/confirmation/<selected_path>')
+# def confirmation(selected_path):
+#     return render_template('confirmation.html', selected_path=selected_path)
+
+
+
+# def professor_lab():
+#     print("Hello again " + user.name + "! It is great to see you begin your journey within Sassyland. Today is an exciting day! You will be meeting your first pokemon.")
+#     starter_choice = input("Please choose your starter! ").lower()
+#     starter_pokemon = Pokemon(starter_choice)
+#     if starter_choice == "bulbasaur":
+#         starter_pokemon.evolution = "ivysaur"
+#     elif starter_choice == "squirtle":
+#         starter_pokemon.evolution = "wartortle"
+#     else:
+#         starter_pokemon.evolution = "charmeleon"
+
+#     pokemon_list = [starter_pokemon]
+#     pokemon_party = PokemonParty(pokemon_list)
+#     user.party = pokemon_party
+#     print("Congratulations on your " + starter_pokemon.name + ", " + user.name + "! It seems to be really attached to you! This " + starter_pokemon.name + " will be your first buddy to explore the region.")
 # def welcome():
 #     nameask = input("Happi you are here! Please enter your name here: ")
 #     trainer_type = Trainer()
@@ -246,7 +287,7 @@ def welcome():
 #     clefairy = Pokemon("clefairy")
 #     charlotte_party.party = [farfetchd, jigglypuff, clefairy]
 #     charlotte_reindeer = Trainer(social="social", name="Charlotte Reindeer", party=charlotte_party)
-#     print("Hey trainer! My name is " + charlotte_reindeer.name + " and I will be taking you on the " + charlotte_reindeer.social + " path! To get started on your journey, we will be providing you some social tasks.")
+#     print("Hey trainer! My name is " + charlotte_rseindeer.name + " and I will be taking you on the " + charlotte_reindeer.social + " path! To get started on your journey, we will be providing you some social tasks.")
 #     social_task = input(
 #         "Please select one of the following paths: " + fartask.pokemon.name + ": " + fartask.title + " OR " + jigtask.pokemon.name + ": " + jigtask.title + " OR " + cleftask.pokemon.name + ": " + cleftask.title + "? ").lower()
 
