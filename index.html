@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <style>
+        /* Styling for the login/signup container */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #0eaff1; /* Light Blue background color */
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        /* Styling for the login/signup forms */
+        .forms-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        /* Styling for the login/signup forms */
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 400px;
+            margin-bottom: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color:black;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to HappiHelper!</h1>
+    <img src="happi.png">
+    <div class="container">
+        <h1>Log In or Sign Up</h1>
+        <div class="forms-container">
+            <form id="loginForm" class="login-form">
+                <h2>Login</h2>
+                <label for="username">Username:</label>
+                <input type="text" id="username" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" required>
+                <button type="submit">Login</button>
+                <p id="loginMessage"></p>
+            </form>
+            <form id="signupForm" class="signup-form">
+                <h2>Sign Up</h2>
+                <label for="signupUsername">Username:</label>
+                <input type="text" id="signupUsername" required>
+                <label for="signupPassword">Password:</label>
+                <input type="password" id="signupPassword" required>
+                <label for="confirmPassword">Confirm Password:</label>
+                <input type="password" id="confirmPassword" required>
+                <button type="submit">Sign Up</button>
+                <p id="signupMessage"></p>
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
