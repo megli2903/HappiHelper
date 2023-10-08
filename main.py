@@ -114,17 +114,10 @@ class Trainer:
 class Pokemon:
     def __init__(self, name=None, evolution=None):
         self.name = name
-        self.evolution = evolution
 
 class PokemonParty:
     def __init__(self, party=None):
         self.party = party
-
-venusaur = Pokemon("Venusaur", None)
-ivysaur = Pokemon("Ivysaur", venusaur)
-bulbusaur = Pokemon("Bulbusaur", ivysaur)
-
-
 
 def welcome():
     nameask = input("Happi you are here! Please enter your name here: ")
