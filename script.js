@@ -18,6 +18,9 @@ document.addEventListener("DOMContentLoaded", function () {
         if (userDatabase[username] && userDatabase[username] === password) {
             loginMessage.textContent = "Login successful!";
             loginMessage.style.color = "green";
+            setTimeout(() => {
+                window.location.href = "startjourney.html";
+            }, 2000);
         } else {
             loginMessage.textContent = "Login failed. Please try again.";
             loginMessage.style.color = "red";
