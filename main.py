@@ -168,7 +168,7 @@ task_list = {
 "clefairy": cleftask,
 "abra": abratask,
 "cubone": cubtask,
-"kabuto": kabtask,
+"krabby": kabtask,
 "bellsprout": beltask,
 "zubat": zubtask,
 "machop": mactask,
@@ -249,7 +249,7 @@ def social_path():
 def introspect_path():
     meg_party = PokemonParty()
     abra = Pokemon("abra")
-    kabuto = Pokemon("kabuto")
+    kabuto = Pokemon("krabby")
     cubone = Pokemon("cubone")
     meg_party.party = [abra, kabuto, cubone]
     meg_liger = Trainer(social="introspect", name="Meg Liger", party=meg_party)
