@@ -2,10 +2,116 @@
 <html>
 <head>
     <title>Welcome to Sassyland</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #ff99cc; /* Light pink background */
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #ff66b2; /* Darker pink text */
+        }
+
+        label {
+            font-weight: bold;
+            color: #ff66b2; /* Darker pink text */
+        }
+
+        select, input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ff66b2; /* Darker pink border */
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        img {
+            max-width: 100px;
+            height: auto;
+            margin-top: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #ff66b2; /* Darker pink button background */
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to Sassyland!</h1>
-    <form method="POST" action="/selectpath">
+    <div class="container">
+        <h1 class="text-center">Welcome to Sassyland!</h1>
+        <form method="POST" action="/selectpath">
+            <label for="user_name">Enter your name:</label>
+            <input type="text" id="user_name" name="user_name" required><br>
+
+            <label for="personality_type">Select your personality type:</label>
+            <select id="personality_type" name="personality_type" required>
+                <option value="ENTJ">ENTJ</option>
+                <option value="ENFJ">ENFJ</option>
+                <option value="ESFJ">ESFJ</option>
+                <option value="ESTJ">ESTJ</option>
+                <option value="ENTP">ENTP</option>
+                <option value="ENFP">ENFP</option>
+                <option value="ESFP">ESFP</option>
+                <option value="ESTP">ESTP</option>
+                <option value="INTP">INTP</option>
+                <option value="INFP">INFP</option>
+                <option value="ISFP">ISFP</option>
+                <option value="ISTP">ISTP</option>
+                <option value="INTJ">INTJ</option>
+                <option value="INFJ">INFJ</option>
+                <option value="ISFJ">ISFJ</option>
+                <option value="ISTJ">ISTJ</option>
+                <!-- Add more options here if needed -->
+            </select><br>
+
+            <label for="starter_pokemon">Choose your starter Pokémon:</label><br>
+            <input type="radio" id="charmander" name="starter_pokemon" value="charmander">
+            <label for="charmander">Charmander</label>
+            <img src="charmander.png" alt="Charmander"><br>
+
+            <input type="radio" id="bulbasaur" name="starter_pokemon" value="bulbasaur">
+            <label for="bulbasaur">Bulbasaur</label>
+            <img src="bulbasaur.png" alt="Bulbasaur"><br>
+
+            <input type="radio" id="squirtle" name="starter_pokemon" value="squirtle">
+            <label for="squirtle">Squirtle</label>
+            <img src="squirtle.png" alt="Squirtle"><br><br>
+
+            <!-- No need for hidden input fields with the same names -->
+            <input type="submit" value="Start Your Journey">
+        </form>
+    </div>
+</body>
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to Sassyland</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container ml=2">
+        <h1 class="text-center">Welcome to Sassyland!</h1>
+        <form method="POST" action="/selectpath">
         <label for="user_name">Enter your name:</label>
         <input type="text" id="user_name" name="user_name" required><br><br>
 
@@ -27,7 +133,7 @@
             <option value="INFJ">INFJ</option>
             <option value="ISFJ">ISFJ</option>
             <option value="ISTJ">ISTJ</option>
-        </select><br><br>
+            </select><br><br>
 
         <label for="starter_pokemon">Choose your starter Pokémon:</label><br>
         <input type="radio" id="charmander" name="starter_pokemon" value="charmander">
@@ -42,11 +148,12 @@
         <label for="squirtle">Squirtle</label>
         <img src="squirtle.png" alt="Squirtle"><br><br>
 
-        <!-- Add hidden input fields for user_name and starter_pokemon -->
+        Add hidden input fields for user_name and starter_pokemon -->
         <input type="hidden" name="user_name" value="">
         <input type="hidden" name="starter_pokemon" value="">
-        
-        <input type="submit" value="Start Your Journey">
-    </form>
+<!--         
+            <input type="submit" value="Start Your Journey"> -->
+        </form>
+    </div>
 </body>
 </html>
