@@ -93,6 +93,43 @@ class PokemonParty:
     def __init__(self, party=None):
         self.party = party
 
+class Task:
+    def __init__(self, pokemon=None, title=None, desc=None):
+        self.title = title
+        self.pokemon = pokemon
+        self.desc = desc
+
+task_list = {
+
+}
+
+#Social path pokemon and tasks
+
+farfetchd = Pokemon("Farfetch'd")
+jigglypuff = Pokemon("Jigglypuff")
+clefairy = Pokemon("Clefairy")
+
+fartask = Task(farfetchd, "Connect with loved ones", "Initiate social interactions regularly to maintain connections with friends and loved ones.")
+jigtask = Task(jigglypuff, "Attend social event", "Attend social events, gatherings, or group activities to recharge your energy")
+cleftask = Task(clefairy, "Team Building", "Engage in team-oriented projects or collaborative activities to satisfy your need for interaction.")
+
+#Introvert path pokemon and tasks
+
+abra = Pokemon("Abra")
+cubone = Pokemon("Cubone")
+kabuto = Pokemon("Kabuto")
+
+abratask = Task("Abra", "Allocate me-time", "Allocate regular me-time for solitude and self-reflection.")
+cubtask = Task("Cubone", "Create cozy atmosphere", "Create a quiet and cozy space at home for relaxation and personal activities.")
+kabtask = Task("Kabuto", "Explore your hobbies", "Dedicate time to your favorite solitary hobbies, such as reading, writing, or art.")
+
+task_list = {
+"farfetch'd": fartask,
+"jigglypuff": jigtask,
+"clefairy": cleftask
+}
+
+
 def welcome():
     nameask = input("Happi you are here! Please enter your name here: ")
     trainer_type = Trainer()
@@ -136,19 +173,53 @@ def professor_lab():
     print("Congratulations on your " + starter_pokemon.name + ", " + user.name + "! It seems to be really attached to you! This " + starter_pokemon.name + " will be your first buddy to explore the region.")
     path_choice = input("Based on our extensive research on your personality, we have determined the routes that will prove most exciting! Please select one of the following: " + user.social + " or " + user.plan + "! ").lower()
     if path_choice == user.social or path_choice == user.plan:
-        print("Great choice to choose the " + path_choice + " path! A thrilling journey of resilience with " + starter_choice + " awaits!")
+        print("Great choice!")
         user.currentpath = path_choice
 
 professor_lab()
 
-print(user.name, user.party, user.social, user.obs, user.thinking, user.plan)
+
+# print(user.name, user.party, user.social, user.obs, user.thinking, user.plan)
+
+def evolution():
+    evolvable_pokemon = []
+    evolvable_pokemon_names = []
+    for pokemon in user.party.party:
+        if evolution_lines.has_key(pokemon):
+            evolvable_pokemon.append(pokemon)
+            evolvable_pokemon_names.append(pokemon.name)
+    if evolvable_pokemon_names.len() == 0:
+        print("Sorry, all your pokemon are fully evolved")
+    toevolve = input("Please select a pokemon to evolve: " + evolvable_pokemon_names + ": ")
+    if toevolve.lower() in       
+    print("insert evolution print here")
+
+
 
 def social_path():
     charlotte_party = PokemonParty()
-    farfetchd = Pokemon("Farfetch'd", None)
-    jigglypuff = Pokemon("Jigglypuff", "Wigglytuff")
-    clefairy = Pokemon("Clefairy", "Clefable")
-    charlotte_party.append(farfetchd, jigglypuff, clefairy)
+    farfetchd = Pokemon("Farfetch'd")
+    jigglypuff = Pokemon("Jigglypuff")
+    clefairy = Pokemon("Clefairy")
+    charlotte_party.party = [farfetchd, jigglypuff, clefairy]
     charlotte_reindeer = Trainer(social="social", name="Charlotte Reindeer", party=charlotte_party)
-    print("Hey trainer! My name is " + charlotte_reindeer.name + " and I will be taking you on the" + charlotte_reindeer.social + "path! To get started on your journey, we will be providing you some social tasks.")
+    print("Hey trainer! My name is " + charlotte_reindeer.name + " and I will be taking you on the " + charlotte_reindeer.social + " path! To get started on your journey, we will be providing you some social tasks.")
+    social_task = input("Please select one of the following paths: " + fartask.pokemon.name + ": " + fartask.title + " OR " + jigtask.pokemon.name + ": " + jigtask.title + " OR " + cleftask.pokemon.name + ": " + cleftask.title + "? ").lower()
+    if (social_task == fartask.pokemon.name.lower() or social_task == jigtask.pokemon.name.lower() or social_task == cleftask.pokemon.name.lower()):
+        thetask = task_list.get(social_task)
+        finishedtask = input("Hiya trainer! My name is: " + thetask.pokemon.name + " and your task today is: " + thetask.desc + ". Have you completed this task?").lower()
+        if (finishedtask == "yes"):
+            choosecatch = input("Congratulations! You are one step closer to becoming champion of the Sassyland region! I am very inspired by what you have done. Would I be able to join your team? If not, the least I can do is help you evolve your pokemon: ").lower()
+            if (choosecatch == "evolve"):
+                evolution()
+            else:
+                user.party.party.append(thetask.pokemon)
+                print("Congratulations! " + thetask.pokemon.name + " has joined your party!")
+        else:
+            print("It was nice to meet you! Truly sorry to see you go :(")
+    else: 
+        print("Did not enter the task")
 
+
+
+social_path()
